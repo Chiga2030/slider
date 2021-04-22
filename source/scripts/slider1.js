@@ -55,23 +55,22 @@ const setTranslate = (el, amount) => {
   el.style.transform = `translateX(${amount}vw)`;
 };
 
-const setNewActiveEl = (searchInEl, direction) => {
-  const elementList = searchInEl.querySelectorAll('.slider__slide');
 
-  elementList.forEach(
-    (item, index) => {
+const setNewActiveEl = (searchInEl, direction) => {
+  searchInEl.querySelectorAll('.slider__slide').forEach(
+    (item, index, array) => {
       if (item.classList.value.indexOf('active') + 1) {
         item.classList.remove('active');
         // return false;
 
+        // console.log('index ', array)
 
-
-    if (direction === 'left') {
-        elementList[index - 1].classList.add('active')
-      } else if (direction === 'right') {
-        elementList[index + 1].classList.add('active')
-      }
-      return false;
+        if (direction === 'left') {
+          array[index - 1].classList.add('active')
+        } else if (direction === 'right') {
+          console.log('index', index)
+          array[index+1].classList.add('active');
+        }
       }
   })
 }
