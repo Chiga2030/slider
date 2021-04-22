@@ -57,32 +57,30 @@ const setTranslate = (el, amount) => {
 
 
 const setNewActiveEl = (searchInEl, direction) => {
-  searchInEl.querySelectorAll('.slider__slide').forEach(
-    (item, index, array) => {
-      if (item.classList.value.indexOf('active') + 1) {
-        item.classList.remove('active');
-        // return false;
+  const element = searchInEl.querySelector('.active');
+  element.classList.remove('active');
 
-        // console.log('index ', array)
-
-        if (direction === 'left') {
-          array[index - 1].classList.add('active')
-        } else if (direction === 'right') {
-          console.log('index', index)
-          array[index+1].classList.add('active');
-        }
-      }
-  })
+  if (direction === 'left') {
+    element.previousElementSibling.classList.add('active');
+  } else {
+    element.nextElementSibling.classList.add('active');
+  }
 }
 
 const slideTo = (direction, translateEl) => {
   const translateValue = getActiveEl(translateEl) + 1;
+  let transformValue = 0;
 
   if (direction === 'left') {
-    setTranslate(wrapper, getTransformValue() * translateValue);
+    transformValue = getTransformValue() * translateValue;
+    setTranslate(wrapper, transformValue);
     setNewActiveEl(wrapper, direction)
   } else if (direction === 'right') {
-    setTranslate(wrapper, -getTransformValue() * translateValue);
-    setNewActiveEl(wrapper, direction)
+    return () => ({
+      transformValue = -getTransformValue() * translateValue;
+      setTranslate(wrapper, transformValue);
+      setNewActiveEl(wrapper, direction)
+      console.log(transformValue)
+    })()
   }
 }
