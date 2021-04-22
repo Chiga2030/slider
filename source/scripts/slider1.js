@@ -1,13 +1,13 @@
-window.addEventListener('resize', () => {
-  getInitTranslate();
-  setInitTranslate();
-});
+// window.addEventListener('resize', () => {
+//   getInitTranslate();
+//   setInitTranslate();
+// });
 
 document.addEventListener('click', event => {
   if (event.target.classList.value === 'btn-right') {
-    slideTo('right');
+    slideTo('right', wrapper);
   } else if (event.target.classList.value === 'btn-left') {
-    slideTo('left');
+    slideTo('left', wrapper);
   }
 });
 
@@ -15,6 +15,21 @@ const slider = document.getElementById('my-slider');
 const wrapper = slider.querySelector('.wrapper');
 const sliderInfo = slider.querySelector('.slider-info');
 
+
+const getActiveEl = (searchInEl) => {
+  let result;
+
+  searchInEl.querySelectorAll('.slider__slide').forEach(
+    (item, index) => {
+      if (item.classList.value.indexOf('active') + 1) {
+        result = index;
+        return false;
+      }
+    }
+  );
+  console.log(result)
+  return result
+}
 
 
 const getWrapperTranslate = () => {
@@ -29,9 +44,9 @@ const getTransformValue = () => {
   if (document.documentElement.clientWidth > 768) {
     return 21.8;
   } else if (document.documentElement.clientWidth > 425) {
-    return 48;
+    return 16;
   } else {
-    return 100;
+    return 50;
   }
 }
 
@@ -40,24 +55,35 @@ const setTranslate = (el, amount) => {
   el.style.transform = `translateX(${amount}vw)`;
 };
 
-const searchActiveElement = () => {
-  const slides = slider.querySelectorAll('.slider__slide');
+const setNewActiveEl = (searchInEl, direction) => {
+  const elementList = searchInEl.querySelectorAll('.slider__slide');
+
+  elementList.forEach(
+    (item, index) => {
+      if (item.classList.value.indexOf('active') + 1) {
+        item.classList.remove('active');
+        // return false;
+
+
+
+    if (direction === 'left') {
+        elementList[index - 1].classList.add('active')
+      } else if (direction === 'right') {
+        elementList[index + 1].classList.add('active')
+      }
+      return false;
+      }
+  })
 }
 
-const slideTo = direction => {
+const slideTo = (direction, translateEl) => {
+  const translateValue = getActiveEl(translateEl) + 1;
+
   if (direction === 'left') {
-    setTranslate(wrapper, getTransformValue())
+    setTranslate(wrapper, getTransformValue() * translateValue);
+    setNewActiveEl(wrapper, direction)
   } else if (direction === 'right') {
-    setTranslate(wrapper, -getTransformValue())
+    setTranslate(wrapper, -getTransformValue() * translateValue);
+    setNewActiveEl(wrapper, direction)
   }
 }
-
-const sliderInfoValue = () => {
-  let result;
-  slides.forEach((element, index, array) => {
-    if (element.classList.value.indexOf('active') + 1) {
-      result = `${index + 1} / ${array.length}`;
-    }
-  });
-  return result;
-};
