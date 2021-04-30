@@ -79,8 +79,8 @@ const slideTo = (direction, translateEl) => {
     return () => ({
       transformValue = -getTransformValue() * translateValue;
       setTranslate(wrapper, transformValue);
-      setNewActiveEl(wrapper, direction)
-      console.log(transformValue)
+      setNewActiveEl(wrapper, direction);
+      console.log(transformValue);
     })()
   }
 }
