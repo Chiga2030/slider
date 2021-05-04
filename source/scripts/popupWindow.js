@@ -116,6 +116,8 @@ const hidePopUp = () => {
     document.querySelector('#rec305615005 .t396__artboard').style.height = '600px';
   } else if (clientWidth() === 768) {
   document.querySelector('#rec305615005 .t396__artboard').style.height = '600px';
+  } else if (clientWidth() > 768 && clientWidth() < 1024) {
+  document.querySelector('#rec305615005 .t396__artboard').style.height = '350px';
   } else if (clientWidth() === 1024) {
   document.querySelector('#rec305615005 .t396__artboard').style.height = '470px';
   } else {
