@@ -1,13 +1,14 @@
 .galleryft-slider__slide {
-  height: 30vw;
-  width: 30vw;
-  margin: 1.4vw;
+  height: 18vw;
+  width: 18vw;
+  margin: 1vw;
+  transform-origin: center top;
+  transition: transform .5s ease-out;
+  border-radius: 0.5em;
+  overflow: hidden;
 }
 
-@media (min-width: 1441px) {
-  .galleryft-slider__slide {
-    height: 20vw;
-    width: 20vw;
-    margin: .5vw;
-  }
+.galleryft-slider__slide_active {
+  margin: 1vw 8.5vw;
+  transform: scale(1.8);
 }

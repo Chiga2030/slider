@@ -2,6 +2,4 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-  transform-origin: center top;
-  transition: all .5s ease-out;
 }
