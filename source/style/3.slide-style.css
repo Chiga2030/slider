@@ -1,0 +1,13 @@
+.galleryft-slider__slide {
+  height: 30vw;
+  width: 30vw;
+  margin: 1.4vw;
+}
+
+@media (min-width: 1441px) {
+  .galleryft-slider__slide {
+    height: 20vw;
+    width: 20vw;
+    margin: .5vw;
+  }
+}
