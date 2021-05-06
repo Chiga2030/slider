@@ -4,7 +4,7 @@
   margin: 1vw;
   transform-origin: center top;
   transition: transform .5s ease-out;
-  border-radius: 0.5em;
+  border-radius: .5em;
   overflow: hidden;
 }
 
