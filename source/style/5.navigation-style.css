@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   margin: auto;
-  transform: translateY(5vh);
+  transform: translateY(32%);
 }
 
 .galleryft-slider__navigation-button {
