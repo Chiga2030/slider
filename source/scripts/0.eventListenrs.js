@@ -1,1 +1,1 @@
-// document.addEventListener('click', () => slider.slideTo());
+document.addEventListener('click', () => slider.slideTo());
