@@ -9,5 +9,5 @@
   display: flex;
   transition: transform .5s ease-out;
   width: max-content;
-  transform: translateX(-7.4vw);
+  transform: translateX(-7.5vw);
 }
