@@ -6,6 +6,7 @@
   transition: transform .5s ease-out, margin .5s ease-out;
   border-radius: .5em;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .galleryft-slider__slide_active {
