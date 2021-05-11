@@ -1,14 +1,14 @@
 .galleryft-slider__navigation {
-  width: 74vw;
+  width: 61vw;
   display: flex;
   justify-content: space-between;
   margin: auto;
-  transform: translateY(32%);
+  transform: translateY(3vw);
 }
 
 .galleryft-slider__navigation-button {
-  width: 18vw;
-  height: 6vw;
+  width: 12vw;
+  height: 4vw;
 }
 
 .galleryft-slider__navigation-button_left,

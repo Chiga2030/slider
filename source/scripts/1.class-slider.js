@@ -39,9 +39,14 @@ class GalleryftSlider {
 
   newActiveClass (
     collection = this.sliderWrapper.children,
-    numberNewActiveClass
+    numberNewActiveClass,
+    node
   ) {
-    collection[numberNewActiveClass].classList.add(this.activeSlideClassName);
+    if (collection !== null || numberNewActiveClass !== null) {
+      return collection[numberNewActiveClass].classList.add(
+        this.activeSlideClassName
+      );
+    } return node.classList.add(this.activeSlideClassName);
   }
 
   getIndexForNewActiveClass (direction) {
@@ -50,24 +55,39 @@ class GalleryftSlider {
     } return this.numberActiveClass() + 1;
   }
 
-  moveWrapper (direction) {
-    if (direction === 'left') {
-      this.wrapperTranslate = this.wrapperTranslate + 20;
-    } else {
-      this.wrapperTranslate = this.wrapperTranslate - 20;
-    }
-
+  moveWrapper (amount) {
     this.sliderWrapper.style.transform = `translateX(
-      ${this.wrapperTranslate}vw
+      ${amount}vw
     )`;
   }
 
+  progression (position) {
+    const a0 = 32.5;
+    const difference = -20;
+    return a0 + (difference * position);
+  }
 
-  slideTo (direction) {
-    const indexForNewActiveClass = this.getIndexForNewActiveClass(direction);
 
-    this.removeActiveClass();
-    this.newActiveClass(this.slidesCollection, indexForNewActiveClass);
-    this.moveWrapper(direction);
+  slideTo (direction, slide) {
+    if (direction) {
+      const indexForNewActiveClass = this.getIndexForNewActiveClass(direction);
+
+      if (indexForNewActiveClass >= 0
+      &&
+      indexForNewActiveClass < this.slidesCollection.length) {
+        this.removeActiveClass();
+        this.newActiveClass(this.slidesCollection, indexForNewActiveClass);
+        this.moveWrapper(this.progression(indexForNewActiveClass));
+      }
+    } else if (slide) {
+      const indexForNewActiveClass = [].indexOf.call(
+        this.sliderWrapper.children,
+        slide
+      );
+
+      this.removeActiveClass();
+      this.newActiveClass(null, null, slide);
+      this.moveWrapper(this.progression(indexForNewActiveClass));
+    }
   }
 }
