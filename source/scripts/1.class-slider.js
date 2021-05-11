@@ -5,6 +5,7 @@ class GalleryftSlider {
   navigationClassName = 'galleryft-slider__navigation';
   marginSlide = '1vw';
   marginActiveSlide = '1vw 8.5vw';
+  wrapperTranslate = -7.5;
 
   constructor (nameById) {
     this.slider = document.getElementById(nameById);
@@ -49,11 +50,24 @@ class GalleryftSlider {
     } return this.numberActiveClass() + 1;
   }
 
+  moveWrapper (direction) {
+    if (direction === 'left') {
+      this.wrapperTranslate = this.wrapperTranslate + 20;
+    } else {
+      this.wrapperTranslate = this.wrapperTranslate - 20;
+    }
+
+    this.sliderWrapper.style.transform = `translateX(
+      ${this.wrapperTranslate}vw
+    )`;
+  }
+
+
   slideTo (direction) {
     const indexForNewActiveClass = this.getIndexForNewActiveClass(direction);
 
-
     this.removeActiveClass();
     this.newActiveClass(this.slidesCollection, indexForNewActiveClass);
+    this.moveWrapper(direction);
   }
 }
