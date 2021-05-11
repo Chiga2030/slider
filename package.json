@@ -22,12 +22,16 @@
   ],
   "author": "Anton Tkachuk",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/eslint-parser": "^7.13.14",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
     "@babel/preset-env": "^7.9.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "browser-sync": "^2.26.13",
     "del": "^6.0.0",
+    "eslint": "^7.25.0",
     "eslint-plugin-import": "^2.22.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^7.0.1",
@@ -49,6 +53,11 @@
     "lodash": "^4.17.20",
     "lodash.template": "^4.5.0",
     "stylelint": "^13.8.0"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
   },
   "main": "index.js"
 }

@@ -1,0 +1,13 @@
+.galleryft-slider {
+  overflow: hidden;
+  width: 100vw;
+  height: 34vw;
+  position: relative;
+}
+
+.galleryft-slider__wrapper {
+  display: flex;
+  transition: transform .5s ease-out;
+  width: max-content;
+  transform: translateX(-7.5vw);
+}

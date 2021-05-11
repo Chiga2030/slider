@@ -1,0 +1,23 @@
+.galleryft-slider__navigation {
+  width: 74vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  transform: translateY(32%);
+}
+
+.galleryft-slider__navigation-button {
+  width: 18vw;
+  height: 6vw;
+}
+
+.galleryft-slider__navigation-button_left,
+.galleryft-slider__navigation-button_right {
+  background: url(../img/arrow.svg) no-repeat center center/contain;
+  border: none;
+  cursor: pointer;
+}
+
+.galleryft-slider__navigation-button_right {
+  transform: scale(-1);
+}
