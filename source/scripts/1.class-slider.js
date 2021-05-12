@@ -2,10 +2,6 @@ class GalleryftSlider {
   wrapperClassName = '.galleryft-slider__wrapper';
   slideClassName = '.galleryft-slider__slide';
   activeSlideClassName = 'galleryft-slider__slide_active';
-  navigationClassName = 'galleryft-slider__navigation';
-  marginSlide = '1vw';
-  marginActiveSlide = '1vw 8.5vw';
-  wrapperTranslate = -7.5;
 
   constructor (nameById) {
     this.slider = document.getElementById(nameById);
