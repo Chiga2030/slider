@@ -3,6 +3,8 @@ class GalleryftSlider {
   slideClassName = '.galleryft-slider__slide';
   activeSlideClassName = 'galleryft-slider__slide_active';
 
+  clientWidth = document.documentElement.clientWidth;
+
   constructor (nameById) {
     this.slider = document.getElementById(nameById);
     this.sliderWrapper = this.slider.querySelector(
@@ -58,8 +60,10 @@ class GalleryftSlider {
   }
 
   progression (position) {
-    const a0 = 32.5;
-    const difference = -20;
+    // const a0 = 32.5;
+    const a0 = -6;
+    // const difference = -20;
+    const difference = -97;
     return a0 + (difference * position);
   }
 
