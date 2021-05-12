@@ -3,6 +3,7 @@
   width: 100vw;
   height: 34vw;
   position: relative;
+  touch-action: manipulation;
 }
 
 .galleryft-slider__wrapper {
