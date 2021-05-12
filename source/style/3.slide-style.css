@@ -13,3 +13,14 @@
   margin: 1vw 8.5vw;
   transform: scale(1.8);
 }
+
+@media (max-width: 575px) {
+  .galleryft-slider__slide {
+    height: 95vw;
+    width: 95vw;
+  }
+
+  .galleryft-slider__slide_active {
+    transform: scale(1);
+  }
+}

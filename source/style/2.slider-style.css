@@ -11,3 +11,13 @@
   width: max-content;
   transform: translateX(-7.5vw);
 }
+
+@media (max-width: 575px) {
+  .galleryft-slider {
+    height: 120vw;
+  }
+
+  .galleryft-slider__wrapper {
+    transform: translateX(-200vw);
+  }
+}

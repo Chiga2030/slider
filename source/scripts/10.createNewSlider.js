@@ -8,6 +8,12 @@ const createNewSlider = sliderNameById => {
       slider.slideTo(null, event.target.parentNode);
     }
   });
+
+  window.addEventListener(
+    'orientationchange', () => setTimeout(
+      () => slider.initDevice(), 200
+    )
+  );
 };
 
 createNewSlider('slider-video-games');

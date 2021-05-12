@@ -2,10 +2,7 @@ class GalleryftSlider {
   wrapperClassName = '.galleryft-slider__wrapper';
   slideClassName = '.galleryft-slider__slide';
   activeSlideClassName = 'galleryft-slider__slide_active';
-  navigationClassName = 'galleryft-slider__navigation';
-  marginSlide = '1vw';
-  marginActiveSlide = '1vw 8.5vw';
-  wrapperTranslate = -7.5;
+  device = this.checkDevice();
 
   constructor (nameById) {
     this.slider = document.getElementById(nameById);
@@ -61,9 +58,28 @@ class GalleryftSlider {
     )`;
   }
 
+  checkDevice () {
+    if (document.documentElement.clientWidth < 576) {
+      return {
+        type: 'mobile',
+        a0: -6,
+        difference: -97,
+      };
+    } return {
+      type: 'desctop',
+      a0: 32.5,
+      difference: -20,
+    };
+  }
+
+  initDevice () {
+    this.device = this.checkDevice();
+    this.moveWrapper(this.progression(this.numberActiveClass()));
+  }
+
   progression (position) {
-    const a0 = 32.5;
-    const difference = -20;
+    const a0 = this.device.a0;
+    const difference = this.device.difference;
     return a0 + (difference * position);
   }
 
