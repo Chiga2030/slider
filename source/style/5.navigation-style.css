@@ -21,3 +21,15 @@
 .galleryft-slider__navigation-button_right {
   transform: scale(-1);
 }
+
+@media (max-width: 575px) {
+  .galleryft-slider__navigation {
+    transform: translateY(8vw);
+    width: 90vw;
+  }
+
+  .galleryft-slider__navigation-button {
+    width: 32vw;
+    height: 8vw;
+  }
+}
