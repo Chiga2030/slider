@@ -16,4 +16,5 @@ const createNewSlider = sliderNameById => {
   );
 };
 
+
 createNewSlider('slider-video-games');
