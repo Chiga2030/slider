@@ -13,6 +13,9 @@ class GalleryftSlider {
       `.${this.activeSlideClassName}`
     );
     this.slidesCollection = this.sliderWrapper.children;
+    this.slide = this.slider.querySelector(
+      this.slideClassName
+    );
   }
 
 
@@ -83,8 +86,37 @@ class GalleryftSlider {
     return a0 + (difference * position);
   }
 
+  checkElementInViewport (element) {
+    const viewport = document.documentElement.clientWidth;
+    const elWidth = element.getBoundingClientRect().width;
+    const elTranslateX = element.getBoundingClientRect().x;
+
+    return elTranslateX < -elWidth;
+  }
+
+  changeSlidePosition (collection) {
+    const slideWidth = window.getComputedStyle(this.slide, null).width;
+    const sliderWrapperWidth = window.getComputedStyle(this.sliderWrapper, null).width;
+
+    this.sliderWrapper.style.width = `calc(${sliderWrapperWidth} + ${slideWidth})`;
+
+    console.log(slideWidth)
+    console.log(sliderWrapperWidth)
+
+    const first = collection[0];
+    console.log(window.getComputedStyle(this.sliderWrapper, null))
+    this.sliderWrapper.append(first);
+    // const last = collection[collection.length - 1];
+    // setTimeout(() => last.after(first), 2000
+      // )
+  }
+
 
   slideTo (direction, slide) {
+    if (direction === 'right' && this.checkElementInViewport(this.slidesCollection[0])) {
+      this.changeSlidePosition(this.slidesCollection);
+    }
+
     if (direction) {
       const indexForNewActiveClass = this.getIndexForNewActiveClass(direction);
 
@@ -93,7 +125,7 @@ class GalleryftSlider {
       indexForNewActiveClass < this.slidesCollection.length) {
         this.removeActiveClass();
         this.newActiveClass(this.slidesCollection, indexForNewActiveClass);
-        this.moveWrapper(this.progression(indexForNewActiveClass));
+        this.moveWrapper(this.progression(indexForNewActiveClass))
       }
     } else if (slide) {
       const indexForNewActiveClass = [].indexOf.call(
