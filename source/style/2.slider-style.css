@@ -10,7 +10,8 @@
   display: flex;
   transition: transform .5s ease-out;
   width: max-content;
-  transform: translateX(-7.5vw);
+  transform: translate3d(-7.5vw, 0, 0);
+  justify-content: flex-end;
 }
 
 @media (max-width: 575px) {
@@ -19,6 +20,6 @@
   }
 
   .galleryft-slider__wrapper {
-    transform: translateX(-200vw);
+    transform: translate3d(-200vw, 0, 0);
   }
 }

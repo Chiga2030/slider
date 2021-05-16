@@ -56,8 +56,8 @@ class GalleryftSlider {
   }
 
   moveWrapper (amount) {
-    this.sliderWrapper.style.transform = `translateX(
-      ${amount}vw
+    this.sliderWrapper.style.transform = `translate3d(
+      ${amount}vw, 0, 0
     )`;
   }
 
@@ -98,17 +98,20 @@ class GalleryftSlider {
     const slideWidth = window.getComputedStyle(this.slide, null).width;
     const sliderWrapperWidth = window.getComputedStyle(this.sliderWrapper, null).width;
 
+    // this.sliderWrapper.style.width = `calc(${sliderWrapperWidth} + ${slideWidth})`;
     this.sliderWrapper.style.width = `calc(${sliderWrapperWidth} + ${slideWidth})`;
 
     console.log(slideWidth)
     console.log(sliderWrapperWidth)
 
     const first = collection[0];
-    console.log(window.getComputedStyle(this.sliderWrapper, null))
+    // console.log(window.getComputedStyle(this.sliderWrapper, null))
     this.sliderWrapper.append(first);
     // const last = collection[collection.length - 1];
     // setTimeout(() => last.after(first), 2000
       // )
+    this.sliderWrapper.style.width = `max-content`;
+
   }
 
 
