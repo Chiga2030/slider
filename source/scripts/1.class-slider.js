@@ -13,6 +13,9 @@ class GalleryftSlider {
       `.${this.activeSlideClassName}`
     );
     this.slidesCollection = this.sliderWrapper.children;
+    this.slide = this.slider.querySelector(
+      this.slideClassName
+    );
   }
 
 
@@ -53,8 +56,8 @@ class GalleryftSlider {
   }
 
   moveWrapper (amount) {
-    this.sliderWrapper.style.transform = `translateX(
-      ${amount}vw
+    this.sliderWrapper.style.transform = `translate3d(
+      ${amount}vw, 0, 0
     )`;
   }
 
@@ -93,7 +96,7 @@ class GalleryftSlider {
       indexForNewActiveClass < this.slidesCollection.length) {
         this.removeActiveClass();
         this.newActiveClass(this.slidesCollection, indexForNewActiveClass);
-        this.moveWrapper(this.progression(indexForNewActiveClass));
+        this.moveWrapper(this.progression(indexForNewActiveClass))
       }
     } else if (slide) {
       const indexForNewActiveClass = [].indexOf.call(
