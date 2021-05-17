@@ -3,7 +3,7 @@
   width: 18vw;
   margin: 1vw;
   transform-origin: center top;
-  transition: transform .5s ease-out, margin .8s ease-out;
+  transition: transform .5s ease-out, margin .5s ease-out;
   border-radius: .5em;
   overflow: hidden;
   cursor: pointer;

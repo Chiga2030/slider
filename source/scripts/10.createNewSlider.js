@@ -18,3 +18,4 @@ const createNewSlider = sliderNameById => {
 
 
 createNewSlider('slider-video-games');
+createNewSlider('slider-architecture');
