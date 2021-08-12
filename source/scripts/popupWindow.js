@@ -1,3 +1,4 @@
+/*
 window.addEventListener("orientationchange", function() {
     hidePopUp();
 
@@ -153,3 +154,4 @@ const getHeightActiveEl = () => {
   const element = document.getElementById('pop-up-window');
   return element.offsetHeight;
 }
+*/
