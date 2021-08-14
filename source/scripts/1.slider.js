@@ -6,17 +6,12 @@
 var toActiveEl5, numberNewActiveEl5, wrapperTranslate5, transform5, slider5 = document.querySelector(".slider-curator"), btnRight5 = slider5.querySelector(".btn-wrapper_right"), btnLeft5 = slider5.querySelector(".btn-wrapper_left"), wrapper5 = slider5.querySelector(".wrapper"), sliderInfo5 = slider5.querySelector(".slider-info"), slides5 = slider5.querySelectorAll(".slider__slide"),
 
 getInitTranslate5 = function() {
-    transform5 = 979 < document.documentElement.clientWidth ? (wrapperTranslate5 = 0, 25) :
-    480 < document.documentElement.clientWidth ? (wrapperTranslate5 = 0, 48) :
-    (wrapperTranslate5 = 0, 100)
-};
-
-getInitTranslate5 = function() {
         transform5 = 768 < document.documentElement.clientWidth ? (wrapperTranslate5 = 30,
         21.8) : 425 < document.documentElement.clientWidth ? (wrapperTranslate5 = 0,
         48) : (wrapperTranslate5 = 0,
         100)
     };
+
 
 getInitTranslate5(),
 window.addEventListener("resize", function() {

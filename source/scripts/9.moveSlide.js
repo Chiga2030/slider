@@ -9,6 +9,8 @@ const foundNum = () => parseInt(wrapper5.style.transform.replace(regExpSearchNum
 
 const curatorState = {
   curentSlide: 0,
+  transform: transform5 === 48 ? 48 * 2 : 100,
+  view: transform5 === 48 ? 'tablet' : transform5 === 100 ? 'mobile' : 'desctop',
   getCurentSlide: function() {
     return this.curentSlide;
   },
@@ -26,29 +28,68 @@ const handleMove = () => {
 
   setTimeout(() => slider5.addEventListener('touchmove', handleMove), 50);
 
+  console.log('deltaX ', deltaX)
   translate(wrapper5, +deltaX);
 }
 
 const handleEnd = () => {
   const curent = foundNum();
+  console.log('curent ', curent)
   const wrapper = wrapper5;
-  const transform = transform5;
+  const transform = curatorState.transform === 96 ? 96/2 : 100;
   const active = 'active5';
   let n = 0;
   const setNewActiveEl = (n) => wrapper.getElementsByTagName('div')[n].classList.add(active);
-
+  const halfItems = (arr) => arr.map(item => item / 2);
+  const settings = {
+    first: [0, -50],
+    second: [-50, -150],
+    third: [-150, -250],
+    fourth: [-250, -350],
+    fifth: [-350],
+    getFirst: function() {
+      if (curatorState.view === 'tablet') {
+        return halfItems(this.first);
+      }
+      return this.first
+    },
+    getSecond: function() {
+      if (curatorState.view === 'tablet') {
+        return halfItems(this.second);
+      }
+      return this.second
+    },
+    getThird: function() {
+      if (curatorState.view === 'tablet') {
+        return halfItems(this.third);
+      }
+      return this.third
+    },
+    getFourth: function() {
+      if (curatorState.view === 'tablet') {
+        return halfItems(this.fourth);
+      }
+      return this.fourth
+    },
+    getFifth: function() {
+      if (curatorState.view === 'tablet') {
+        return halfItems(this.fifth);
+      }
+      return this.fifth
+    },
+  }
 
   activeEl().classList.remove(active);
 
-  if (curent > 0 || curent < 0 && curent > -50) {
+  if (curent > settings.getFirst()[0] || curent < settings.getFirst[0] && curent > settings.getFirst[1]) {
     n = 0;
-  } else if (curent < -50 && curent > -150) {
+  } else if (curent < settings.getSecond()[0] && curent > settings.getSecond()[1]) {
     n = 1;
-  } else if (curent < -150 && curent > -250) {
+  } else if (curent < settings.getThird()[0] && curent > settings.getThird()[1]) {
     n = 2;
-  } else if (curent < -250 && curent > -350) {
+  } else if (curent < settings.getFourth()[0] && curent > settings.getFourth()[1]) {
     n = 3;
-  } else if (curent < -350) {
+  } else if (curent < settings.getFifth()[0]) {
     n = 4;
   }
 
@@ -59,7 +100,7 @@ const handleEnd = () => {
 
 
 const translate = (wrapper, value) => {
-  const curent = curatorState.getCurentSlide() * -100;
+  const curent = curatorState.getCurentSlide() * -(curatorState.view === 'tablet' ? curatorState.transform / 2 : curatorState.transform);
   wrapper.style.transform = `translateX(${curent + value}vw)`;
 }
 
@@ -72,7 +113,7 @@ const newToSlide = (wrapper, transform, num) => {
 const newSlideTo = (direction) => {
   const wrapper = wrapper5;
   const active = 'active5';
-  const transform = transform5;
+  const transform = curatorState.transform === 96 ? 96/2 : 100;
   let n = curatorState.getCurentSlide();
 
   wrapper.children[n].classList.remove(active)
