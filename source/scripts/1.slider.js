@@ -11,12 +11,12 @@ getInitTranslate5 = function() {
     (wrapperTranslate5 = 0, 100)
 };
 
-// getInitTranslate5 = function() {
-//         transform5 = 768 < document.documentElement.clientWidth ? (wrapperTranslate5 = 30,
-//         21.8) : 425 < document.documentElement.clientWidth ? (wrapperTranslate5 = 0,
-//         48) : (wrapperTranslate5 = 0,
-//         100)
-//     };
+getInitTranslate5 = function() {
+        transform5 = 768 < document.documentElement.clientWidth ? (wrapperTranslate5 = 30,
+        21.8) : 425 < document.documentElement.clientWidth ? (wrapperTranslate5 = 0,
+        48) : (wrapperTranslate5 = 0,
+        100)
+    };
 
 getInitTranslate5(),
 window.addEventListener("resize", function() {
@@ -24,10 +24,10 @@ window.addEventListener("resize", function() {
     setInitTranslate5()
 }),
 btnRight5.addEventListener("click", function() {
-    return slideTo5("right")
+    return newSlideTo("right")
 }),
 btnLeft5.addEventListener("click", function() {
-    return slideTo5("left")
+    return newSlideTo("left")
 });
 var setTranslate5 = function(e, t) {
     e.style.transform = "translateX(".concat(t, "vw)")
