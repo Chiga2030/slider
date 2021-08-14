@@ -26,15 +26,13 @@ const handleMove = () => {
   slider5.removeEventListener('touchmove', handleMove);
   const deltaX = start - clientX;
 
-  setTimeout(() => slider5.addEventListener('touchmove', handleMove), 50);
+  setTimeout(() => slider5.addEventListener('touchmove', handleMove), 20);
 
-  console.log('deltaX ', deltaX)
   translate(wrapper5, +deltaX);
 }
 
 const handleEnd = () => {
   const curent = foundNum();
-  console.log('curent ', curent)
   const wrapper = wrapper5;
   const transform = curatorState.transform === 96 ? 96/2 : 100;
   const active = 'active5';
@@ -96,6 +94,7 @@ const handleEnd = () => {
   setNewActiveEl(n);
   newToSlide(wrapper, transform, n);
   curatorState.setCurentSlide(n);
+  setTimeout(() => wrapper5.classList.remove('willChange'), 2000)
 };
 
 
@@ -151,6 +150,7 @@ const newSlideTo = (direction) => {
 
 
 wrapper5.addEventListener('touchstart', function(e) {
+  wrapper5.classList.add('willChange');
   clientX = e.touches[0].clientX;
 }, false);
 wrapper5.addEventListener('touchmove', handleMove);
