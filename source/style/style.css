@@ -231,8 +231,12 @@
   display: inline;
   margin: 1.4vw;
   transform-origin: center top;
-  transition: all .5s ease-out;
+  transition: transform .5s ease-out;
   width: 19vw
+}
+
+.slider-curator__slide {
+  transition: transform .1s linear;
 }
 
 .slider__slide_tall {

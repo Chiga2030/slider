@@ -9,7 +9,7 @@ const foundNum = () => parseInt(wrapper5.style.transform.replace(regExpSearchNum
 
 const curatorState = {
   curentSlide: 0,
-  transform: transform5 === 48 ? 48 * 2 : 100,
+  transform: transform5 === 48 ? 48 * 2 : transform5,
   view: transform5 === 48 ? 'tablet' : transform5 === 100 ? 'mobile' : 'desctop',
   getCurentSlide: function() {
     return this.curentSlide;
@@ -20,13 +20,23 @@ const curatorState = {
 }
 
 
-const handleMove = () => {
-  const start = getX();
+const handleStart = (e) => {
+  wrapper5.classList.add('willChange');
+  clientX = e.touches[0].clientX;
+}
 
-  slider5.removeEventListener('touchmove', handleMove);
+
+const handleMove = (e) => {
+  const start = getX();
   const deltaX = start - clientX;
 
-  setTimeout(() => slider5.addEventListener('touchmove', handleMove), 20);
+  slider5.removeEventListener('touchmove', handleMove);
+
+  setTimeout((e) => {
+    if(wrapper5.contains(e.target)) {
+      slider5.addEventListener('touchmove', handleMove(e));
+    }
+  }, 20);
 
   translate(wrapper5, +deltaX);
 }
@@ -34,7 +44,7 @@ const handleMove = () => {
 const handleEnd = () => {
   const curent = foundNum();
   const wrapper = wrapper5;
-  const transform = curatorState.transform === 96 ? 96/2 : 100;
+  const transform = curatorState.transform === 96 ? 96/2 : curatorState.view === 'desctop' ? curatorState.transform : 100;
   const active = 'active5';
   let n = 0;
   const setNewActiveEl = (n) => wrapper.getElementsByTagName('div')[n].classList.add(active);
@@ -112,7 +122,7 @@ const newToSlide = (wrapper, transform, num) => {
 const newSlideTo = (direction) => {
   const wrapper = wrapper5;
   const active = 'active5';
-  const transform = curatorState.transform === 96 ? 96/2 : 100;
+  const transform = curatorState.transform === 96 ? 96/2 : curatorState.transform;
   let n = curatorState.getCurentSlide();
 
   wrapper.children[n].classList.remove(active)
@@ -150,8 +160,11 @@ const newSlideTo = (direction) => {
 
 
 wrapper5.addEventListener('touchstart', function(e) {
-  wrapper5.classList.add('willChange');
-  clientX = e.touches[0].clientX;
+  if(wrapper5.contains(e.target)) return handleStart(e);
 }, false);
-wrapper5.addEventListener('touchmove', handleMove);
-wrapper5.addEventListener('touchend', handleEnd);
+wrapper5.addEventListener('touchmove', function(e) {
+  if(wrapper5.contains(e.target)) return handleMove(e);
+}, false);
+wrapper5.addEventListener('touchend', function(e) {
+  if(wrapper5.contains(e.target)) return handleEnd(e);
+}, false);
